@@ -11,27 +11,27 @@ Praktikum Modul 4 Jaringan Komputer 2020
 
 Membuat Subnetting dan Routing dari topologi berikut :
 
-![]()
+![](img/toposoal.png)
 
 ## **VLSM (Variable Length Subnet Masking)**
 
 **Langkah 1** - Menentukan jumlah dan memberi nama subnet yang terdapat dalam topologi.
 
-![]()
+![](img/langkah1.png)
 
 **Langkah 2** - Menentukan jumlah alamat IP yang dibutuhkan oleh tiap-tiap subnet dan melakukan labelling netmask berdasarkan jumlah IP yang dibutuhkan dengan mengacu pada tabel subnet.
 
-![]()
+![](img/langkah2.PNG)
 
 Berdasarkan total IP dan netmask yang dibutuhkan, maka dapat digunakan netmask **/19** untuk memberikan pengalamatan padaa subnet.
 
 **Langkah 3** - Subnet besar yang dibentuk memiliki NID **192.168.0.0** serta netmask /19. Selanjutnya hitung pembagian IP berdasarkan NID dan netmask tersebut menggunakan pohon. Kemudian lakukan subnetting dengan pohon yang telah dibuat untuk membagi IP sesuai dengan kebutuhan masing-masing subnet yang ada.
 
-![]()
+![](img/langkah3.png)
 
 **Langkah 4** - Dari pohon tersebut, akan didapatkan pembagian IP sebagai berikut :
 
-![]()
+![](img/langkah4.PNG)
 
 ### **Praktik penerapan metode VLSM diatas menggunakan Cisco Packet Tracer (CPT).**
 
@@ -39,7 +39,7 @@ Berdasarkan total IP dan netmask yang dibutuhkan, maka dapat digunakan netmask *
 
 Penambahan elemen-elemen dalam topologi dilakukan sesuai dengan tata cara yang terdapat di modul Subnetting dan Routing. Dengan hasil sebagai berikut :
 
-![]()
+![](img/1.PNG)
 
 2. Subnetting 
 
@@ -49,11 +49,11 @@ Dilakukan pengaturan IP untuk masing-masing interface yang ada pada setiap devic
 
 Mengambil contoh pada subnet **A10** yaitu antar router SURABAYA dan PASURUAN. Atur IP pada interface SURABAYA mengarah ke PASURUAN dengan menambahkan NID +1 dari subnet **A10** yaitu **192.168.0.5**. Sebagai berikut :
 
-![]()
+![](img/2.1.PNG)
 
 Kemudian atur juga IP pada interface PASURUAN yang mengarah ke SURABAYA dengan menambahkan NID +2 dari subnet **A10** yaitu **192.168.0.6**. Sebagai berikut :
 
-![]()
+![](img/2.2.PNG)
 
 Langkah ini diterapkan untuk mengatur alamat IP setiap interface router ke router dalam device yang terdapat dalam topologi. Dimana dalam topologi kami yaitu subnet **A9, A10, A14, A15**.
 
@@ -61,11 +61,11 @@ Langkah ini diterapkan untuk mengatur alamat IP setiap interface router ke route
 
 Mengambil contoh pada subnet **A6** yaitu antar router PROBOLINGGO dan client BONDOWOSO. Atur IP pada interface PROBOLINGGO mengarah ke BONDOWOSO dengan menambahkan NID +1 dari subnet **A6** yaitu **192.168.0.129**. Sebagai berikut :
 
-![]()
+![](img/2.3.PNG)
 
 Kemudian atur juga IP pada interface BONDOWOSO yang mengarah ke PROBOLINGGO pada menu **Desktop > IP Configuration** dengan menambahkan NID +2 dari subnet **A6** yaitu **192.168.0.130**. Sebagai berikut :
 
-![]()
+![](img/2.4.PNG)
 
 Langkah ini diterapkan untuk mengatur alamat IP setiap interface router ke router dalam device yang terdapat dalam topologi. Dimana dalam topologi kami yaitu subnet **A2, A3, A4, A5, A6, A7, A8, A12, dan A13**.
 
@@ -77,17 +77,17 @@ IP DMZ kelompok C01 adalah **10.151.77.16**, maka untuk server MOJOKERTO dihasil
 
 Mengambil contoh pada subnet **A1** yaitu antar server MOJOKERTO dan router SURABAYA. Atur IP pada interface SURABAYA mengarah ke MOJOKERTO dengan menambahkan IP DMZ +2 yaitu **10.151.77.18**. Sebagai berikut :
 
-![]()
+![](img/2.5.PNG)
 
 Kemudian atur juga IP pada interface MOJOKERTO yang mengarah ke SURABAYA dengan menambahkan NID +1 dari subnet **A10** yaitu **10.151.77.17**. Sebagai berikut :
 
-![]()
+![](img/2.6.PNG)
 
 3. Routing
 
 Berikut adalah tabel perhitungan routing :
 
-![]()
+![](img/routing.PNG)
 
 Pada CPT, routing dilakukan dengan memilih menu **Config > ROUTING > Static** dalam device router. Untuk menambahkan sebuah Static Routes, yang perlu diisi antara lain :
 
@@ -99,7 +99,7 @@ Pada CPT, routing dilakukan dengan memilih menu **Config > ROUTING > Static** da
 
 SURABAYA merupakan router utama, perlu dikenalkan dengan subnet bukan tetangganya, antara lain A9, A6, A4, A3, A8, A7, A5, A15, A13, A12, A11 (Server Malang). Maka ditambahkan routing sebagai berikut :
 
-![]()
+![](img/surabaya.PNG)
 
 Dalam Static Routing juga dibutuhkan ***default routing*** agar router dapat mengirimkan paket sesuai dengan tujuan. Default routing diterapkan pada router yang berada dibawah router utama (SURABAYA).
 
@@ -107,43 +107,47 @@ Dalam Static Routing juga dibutuhkan ***default routing*** agar router dapat men
 
 Router PASURUAN perlu dikenalkan dengan subnet yang bukan tetangganya, yaitu default, A6, dan A7. Maka ditambahkan routing sebagai berikut :
 
-![]()
+![](img/pasuruan.PNG)
 
 ***Routing PROBOLINGGO***
 
 Router PROBOLINGGO berada di ujung (tidak ada router lagi di cabangnya), maka hanya perlu dikenalkan dengan default. Maka ditambahkan routing sebagai berikut :
 
-![]()
+![](img/probolinggo.PNG)
 
 ***Routing BATU***
 
 Router BATU perlu dikenalkan dengan subnet yang bukan tetangganya, yaitu default, A3, A12, A13, dan A11 (Server Malang). Maka ditambahkan routing sebagai berikut :
 
-![]()
+![](img/batu.PNG)
 
 ***Routing MADIUN***
 
 Router MADIUN berada di ujung (tidak ada router lagi di cabangnya), maka hanya perlu dikenalkan dengan default. Maka ditambahkan routing sebagai berikut :
 
-![]()
+![](img/madiun.PNG)
 
 ***Routing KEDIRI***
 
 Router KEDIRI perlu dikenalkan dengan subnet yang bukan tetangganya, yaitu default dan A12. Maka ditambahkan routing sebagai berikut :
 
-![]()
+![](img/kediri.PNG)
 
 ***Routing BLITAR***
 
 Router BLITAR berada di ujung (tidak ada router lagi di cabangnya), maka hanya perlu dikenalkan dengan default. Maka ditambahkan routing sebagai berikut :
 
-![]()
+![](img/blitar.PNG)
 
 ### HASIL :
 
 Berikut beberapa hasil testing subnetting dan routing dengan menggunakan tombol dengan ikon surat pada toolbar CPT :
 
-![]()
+![](img/hasil1.PNG)
+
+![](img/hasil2.PNG)
+
+![](img/hasil3.PNG)
 
 ## **CIDR (Classless Inter-Domain Routing)**
 
