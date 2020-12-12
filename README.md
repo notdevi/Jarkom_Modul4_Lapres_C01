@@ -78,3 +78,59 @@ IP DMZ kelompok C01 adalah **10.151.77.16**, maka untuk server MOJOKERTO dihasil
 Mengambil contoh pada subnet **A1** yaitu antar server MOJOKERTO dan router SURABAYA. Atur IP pada interface MOJOKERTO mengarah ke SURABAYA dengan menambahkan IP DMZ +1 yaitu **10.151.77.17**. Sebagai berikut :
 
 ![]()
+
+### **CIDR (Classless Inter-Domain Routing)**
+
+*****Langkah 1*** - Melakukan Pengelompokkan**
+
+Melalui topologi yang telah disediakan di soal, kita dapat melakukan pengelompokkan pada *subnet*, dimulai dari *subnet* yang berada paling jauh dari *router* utama (**SURABAYA**).
+
+![]()
+
+Langkah ini juga menghasilkan pohon CIDR sebagai berikut:
+
+![]()
+
+*****Langkah 2*** - Melakukan Konfigurasi pada *Interfaces***
+
+Melalui ```etc/network/interfaces``` di tiap UML, kita akan menghubungkan tiap-tiap *subnet* sesuai dengan hubungannya dengan *subnet* lain. <br/>
+Misal, Surabaya akan terhubung dengan:
+<li> Cloud di eth0,
+<li> SAMPANG di eth1 (melalui switch 1),
+<li> PASURUAN di eth2 (melalui switch baru),
+<li> BATU di eth3 (melalui switch baru), dan
+<li> MOJOKERTO di eth4 (melalui switch 13).
+
+Untuk memperoleh *address* (sekaligus *gateway*) tiap jalur, dapat mengambil referensi dari pengelompokkan dan pohon CIDR yang telah dibuat pada langkah sebelumnya, serta tabel *subnet mask*.
+
+*****Langkah 3*** - Melakukan Routing**
+
+Menggunakan *command* ``route add -net <NID subnet> netmask <netmask> gw <IP gateway>``, kita dapat menambahkan *route* pada setiap UML. Dalam kasus ini, kita hanya perlu menambahkan *routing* pada:
+<li> SURABAYA => PASURUAN, BATU, DMZ MALANG
+<li> BATU => KEDIRI, MALANG (Lewat Kediri), MADIUN
+<li> PASURUAN => PROBOLINGGO
+<li> KEDIRI => BLITAR
+
+Dengan *setting* sebagai berikut:
+#### SURABAYA
+```
+route add -net 192.168.128.0 netmask 255.255.192.0 gw 192.168.192.2
+route add -net 192.168.0.0 netmask 255.255.224.0 gw 192.168.32.2
+route add -net 10.151.77.20 netmask 255.255.255.252 gw 192.168.32.2
+```
+
+#### PASURUAN
+```
+route add -net 192.168.128.0 netmask 255.255.240.0 gw 192.168.144.2
+```
+
+#### BATU
+```
+route add -net 192.168.0.0 netmask 255.255.248.0 gw 192.168.8.2
+route add -net 10.151.77.92 netmask 255.255.255.252 gw 192.168.8.2
+route add -net 192.168.16.0 netmask 255.255.252.0 gw 192.168.18.3
+```
+#### KEDIRI
+```
+route add -net 192.168.0.0 netmask 255.255.248.0 gw 192.168.4.3
+```
