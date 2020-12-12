@@ -139,7 +139,7 @@ Router BLITAR berada di ujung (tidak ada router lagi di cabangnya), maka hanya p
 
 ![]()
 
-### **HASIL : **
+### HASIL :
 
 Berikut beberapa hasil testing subnetting dan routing dengan menggunakan tombol dengan ikon surat pada toolbar CPT :
 
