@@ -155,11 +155,17 @@ Berikut beberapa hasil testing subnetting dan routing dengan menggunakan tombol 
 
 Melalui topologi yang telah disediakan di soal, kita dapat melakukan pengelompokkan pada *subnet*, dimulai dari *subnet* yang berada paling jauh dari *router* utama (**SURABAYA**).
 
-![]()
+![](img/CIDR/1.jpg)
+![](img/CIDR/2.jpg)
+![](img/CIDR/3.jpg)
+![](img/CIDR/4.jpg)
+![](img/CIDR/5.jpg)
+![](img/CIDR/6.jpg)
+
 
 Langkah ini juga menghasilkan pohon CIDR sebagai berikut:
 
-![]()
+![](img/CIDR/Pohon_CIDR.png)
 
 *****Langkah 2*** - Melakukan Konfigurasi pada *Interfaces***
 
